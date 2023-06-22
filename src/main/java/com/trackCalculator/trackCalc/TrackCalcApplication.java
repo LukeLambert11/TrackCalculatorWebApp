@@ -13,17 +13,14 @@ public class TrackCalcApplication {
 }
 
 
+
 /*TODO
-   Add time calculator
-   Add checks for data entered
-   add a uniform string return
-   change the name of the constants files
-   add spring boot
+   fix HungarianScoring to work for field events and for race walk/road race
+   Add checks for data entered on hungarian calculator
+   make all the 
    make front end
    put front end in the static directory
    figure out how to host probably on AWS
-   Add DTOs
    add controller
    add service
-   figure out how the links work like the naming within the code
  */
