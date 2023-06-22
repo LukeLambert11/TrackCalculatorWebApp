@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.trackCalculator</groupId>
-	<artifactId>trackCalc</artifactId>
+	<artifactId>TrackCalculator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>trackCalc</name>
 	<description>Track Calculator web app </description>

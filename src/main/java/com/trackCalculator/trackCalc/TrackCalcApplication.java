@@ -22,4 +22,8 @@ public class TrackCalcApplication {
    make front end
    put front end in the static directory
    figure out how to host probably on AWS
+   Add DTOs
+   add controller
+   add service
+   figure out how the links work like the naming within the code
  */
