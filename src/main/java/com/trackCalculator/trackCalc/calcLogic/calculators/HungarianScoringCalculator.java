@@ -1,7 +1,7 @@
 package com.trackCalculator.trackCalc.calcLogic.calculators;
 
 
-import com.trackCalculator.trackCalc.calcLogic.conversions.TimeConversions;
+import com.trackCalculator.trackCalc.calcLogic.util.TimeConversions;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -63,7 +63,7 @@ public final class HungarianScoringCalculator {
 
         StringBuilder string = new StringBuilder();
 
-        if(gender.equals("m")){
+        if(gender.equals("men")){
             string.append("men");
         }
         else{

@@ -1,4 +1,4 @@
-package com.trackCalculator.trackCalc.calcLogic.conversions;
+package com.trackCalculator.trackCalc.calcLogic.util;
 
 public class TimeConversions {
 
@@ -14,15 +14,15 @@ public class TimeConversions {
 
         int hours = (int) (seconds / 3600);
         int minutes = (int) ((seconds % 3600) / 60);
-        int remainingSeconds = (int) (seconds % 60);
+        float remainingSeconds =  (seconds % 60);
 
-        string.append(Integer.toString(hours));
+        string.append(String.format("%02d", hours));
         string.append(":");
-        string.append(Integer.toString(minutes));
+        string.append(String.format("%02d", minutes));
         string.append(":");
-        string.append(Integer.toString(remainingSeconds));
+        string.append(String.format("%.2f", remainingSeconds));
 
-        return string.toString();
+        return TrimHour.checkHourTrim(string.toString());
 
     }
 

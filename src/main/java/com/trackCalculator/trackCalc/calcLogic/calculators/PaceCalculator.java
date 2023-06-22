@@ -1,20 +1,37 @@
 package com.trackCalculator.trackCalc.calcLogic.calculators;
 
-import com.trackCalculator.trackCalc.calcLogic.conversions.TimeConversions;
+
+import com.trackCalculator.trackCalc.calcLogic.util.TimeConversions;
+
+import static com.trackCalculator.trackCalc.calcLogic.util.TrimHour.checkHourTrim;
 
 public class PaceCalculator {
 
-    public String calculateAveragePace(Float distance, int hours, int minutes,  Float seconds, String distanceUnit){
 
-        Float totalSeconds = TimeConversions.convertToSeconds(hours, minutes, seconds);
 
+    public static String calculateAveragePace(Float distance, int hours, int minutes,  Float seconds, String distanceUnit){
+
+        float totalSeconds = TimeConversions.convertToSeconds(hours, minutes, seconds);
+
+        Float kilometerDistance;
+        Float mileDistance;
 
         if(distanceUnit.equals("kilometers")){
-            distance = distance * 0.62137119f;
+            kilometerDistance = distance;
+            mileDistance = distance * 0.621371f;
+        }
+        else if(distanceUnit.equals("miles")){
+            mileDistance = distance;
+            kilometerDistance = distance * 1.60934f;
+        }
+        else{
+            return "Invalid Input";
         }
 
-        return calculateAveragePacePerMile(distance, seconds);
+        String pacePerMile = calculateAveragePacePerMile(mileDistance, totalSeconds);
+        String pacePerKilometer = calculateAveragePacePerKilometer(kilometerDistance, totalSeconds);
 
+        return pacePerMile + " per mile\n" + pacePerKilometer + " per kilometer";
     }
 
 
@@ -22,7 +39,7 @@ public class PaceCalculator {
 
         int hours =  (int) totalSeconds / 3600;
         int minutes = (int) ((totalSeconds % 3600) / 60);
-        int seconds = (int) (totalSeconds % 60);
+        float seconds = (totalSeconds % 60);
 
         float totalTimeInHours = (float) (hours + (minutes / 60.0) + (seconds / 3600.0));
         float pacePerHour = totalTimeInHours / miles;
@@ -30,11 +47,37 @@ public class PaceCalculator {
         int paceMinutes = (int) ((pacePerHour - Math.floor(pacePerHour)) * 60);
         float paceSeconds = (pacePerHour * 3600) % 60;
 
-        String formattedPace = String.format("%02d:%02d:%02f", (int) Math.floor(pacePerHour), paceMinutes, paceSeconds);
+        String formattedPace = String.format("%02d:%02d:%05.2f", (int) Math.floor(pacePerHour), paceMinutes, paceSeconds);
+
+        //removes leading zeros if the hours are zeros
+        formattedPace = checkHourTrim(formattedPace);
 
         return formattedPace;
 
-
     }
+
+    static private String calculateAveragePacePerKilometer(float kilometers, float totalSeconds) {
+        int hours = (int) totalSeconds / 3600;
+        int minutes = (int) ((totalSeconds % 3600) / 60);
+        float seconds =  (totalSeconds % 60);
+
+        float totalTimeInHours = hours + (minutes / 60.0f) + (seconds / 3600.0f);
+        float pacePerHour = totalTimeInHours / kilometers;
+
+        int paceMinutes = (int) ((pacePerHour - Math.floor(pacePerHour)) * 60);
+        float paceSeconds = (pacePerHour * 3600) % 60;
+
+        String formattedPace = String.format("%02d:%02d:%05.2f", (int) Math.floor(pacePerHour), paceMinutes, paceSeconds);
+
+
+        //removes leading zeros if the hours are zeros
+        formattedPace = checkHourTrim(formattedPace);
+
+        return formattedPace;
+    }
+
+
+    //removes leading zeros if the hours are zeros
+
 
 }
