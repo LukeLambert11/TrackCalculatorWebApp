@@ -23,15 +23,30 @@ public final class HungarianScoringCalculator {
 
     private HungarianScoringCalculator() {}
 
+    public static Float getScore(String gender, String location, String event, Float performance, Integer hours, Integer minutes,
+    Float seconds, boolean isField){
+
+        if(isField){
+            return getScore(gender, location, event, performance);
+        }
+        else{
+            return getScore(gender, location, event, hours, minutes, seconds);
+        }
+
+    }
+
+
+
+
     //for field events
-    public static Float getScore(String gender, String location, String event, Float performance){
+    private static Float getScore(String gender, String location, String event, Float performance){
 
         String formattedEventString = getFormattedEventString(gender, event, location);
         return constantsHashMap.get(formattedEventString).getScoreFunc.apply(performance);
     }
 
     //for timed events
-    public static Float getScore(String gender, String location, String event, Integer hours, Integer minutes, Float seconds){
+    private static Float getScore(String gender, String location, String event, Integer hours, Integer minutes, Float seconds){
 
         float totalSeconds = TimeConversions.convertToSeconds(hours, minutes, seconds);
 
@@ -117,6 +132,8 @@ public final class HungarianScoringCalculator {
 
 
                 String event = values[0].replace("TRACK_", "");
+
+
                 event = category + event;
                 float a = Float.parseFloat(values[2]);
                 float b = Float.parseFloat(values[3]);
@@ -157,3 +174,4 @@ public final class HungarianScoringCalculator {
     }
 
 }
+//track road and walk have times everything else isField

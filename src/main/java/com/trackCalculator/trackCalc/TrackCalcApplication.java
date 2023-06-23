@@ -15,9 +15,9 @@ public class TrackCalcApplication {
 
 
 /*TODO
-   fix HungarianScoring to work for field events and for race walk/road race
+   fix HungarianScoring to work for field events
+   		worked on this needs maybe its +- the inverse get performance function is not working
    Add checks for data entered on hungarian calculator
-   make all the 
    make front end
    put front end in the static directory
    figure out how to host probably on AWS

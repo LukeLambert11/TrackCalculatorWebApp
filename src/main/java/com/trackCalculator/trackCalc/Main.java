@@ -19,8 +19,8 @@ public class Main {
 
         ClientEquivalentPerformanceCalculatorData data = new
                 ClientEquivalentPerformanceCalculatorData("men", "Outdoor",
-                "1500", 3f * 60f + 35.f, "men",
-                "Outdoor", "800");
+                "1500", 0, 3, 33f, "men",
+                "Outdoor", "ROAD_MARATHON");
 
         EquivalentPerformanceCalculator.getEquivalentPerformance(data);
 

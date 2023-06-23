@@ -9,8 +9,11 @@ public final class EquivalentPerformanceCalculator {
             (ClientEquivalentPerformanceCalculatorData  client){
 
         float initScore = HungarianScoringCalculator.getScore(client.getInitialGender(),
-                client.getInitialLocation(), client.getInitialEvent(), client.getInitialPerformance());
+                client.getInitialLocation(), client.getInitialEvent(), client.getInitialPerformance(),
+                client.getHours(), client.getMinutes(), client.getSeconds(), client.getIsField());
 
+
+        System.out.println(initScore);
         String finalPerformance = HungarianScoringCalculator.getPerformance(client.getConvertingGender(),
                 client.getConvertingLocation(), client.getConvertingEvent(), initScore);
 
