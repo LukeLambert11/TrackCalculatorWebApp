@@ -3,7 +3,10 @@ package com.trackCalculator.trackCalc;
 import com.trackCalculator.trackCalc.calcLogic.calculators.EquivalentPerformanceCalculator;
 import com.trackCalculator.trackCalc.calcLogic.calculators.HungarianScoringCalculator;
 import com.trackCalculator.trackCalc.calcLogic.calculators.TimeCalculator;
+import com.trackCalculator.trackCalc.calcLogic.calculators.WindCalculator;
 import com.trackCalculator.trackCalc.clientModels.ClientEquivalentPerformanceCalculatorData;
+import com.trackCalculator.trackCalc.clientModels.ClientWindConversionData;
+import com.trackCalculator.trackCalc.serverModels.ServerWindConversionData;
 
 public class Main {
 
@@ -19,11 +22,12 @@ public class Main {
 
         ClientEquivalentPerformanceCalculatorData data = new
                 ClientEquivalentPerformanceCalculatorData("men", "Outdoor",
-                "1500", 0, 3, 33f, "men",
-                "Outdoor", "ROAD_MARATHON");
+                "HIGH_JUMP", 2.3264637f, "men",
+                "Outdoor", "1MILE");
 
         EquivalentPerformanceCalculator.getEquivalentPerformance(data);
 
-
+        ServerWindConversionData data2 = WindCalculator.getConvertedPerformance("100", 10.1f, -2f);
+        System.out.println(data2.getPerformance());
     }
 }

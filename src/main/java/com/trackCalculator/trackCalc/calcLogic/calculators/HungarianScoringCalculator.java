@@ -166,8 +166,14 @@ public final class HungarianScoringCalculator {
 
             //score function
             getScoreFunc = (x) -> a * (float) Math.pow((x + b), 2) + c;
-            //performanceFunc (ie inverse of score)
-            getPerformanceFunc = (x) -> (-1 * (float) Math.sqrt(a * (x - c)) / a - b);
+
+            //performanceFunc (ie inverse of score) for field events
+            if(isField){
+                getPerformanceFunc = (x) -> (1 * (float) Math.sqrt(a * (x - c)) / a - b);
+            }
+            else{             //performanceFunc (ie inverse of score) for running events
+                getPerformanceFunc = (x) -> (-1 * (float) Math.sqrt(a * (x - c)) / a - b);
+            }
         }
 
 

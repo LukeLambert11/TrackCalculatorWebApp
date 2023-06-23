@@ -12,19 +12,10 @@ public final class EquivalentPerformanceCalculator {
                 client.getInitialLocation(), client.getInitialEvent(), client.getInitialPerformance(),
                 client.getHours(), client.getMinutes(), client.getSeconds(), client.getIsField());
 
-
-        System.out.println(initScore);
         String finalPerformance = HungarianScoringCalculator.getPerformance(client.getConvertingGender(),
                 client.getConvertingLocation(), client.getConvertingEvent(), initScore);
 
-
-        System.out.println(finalPerformance);
         return new ServerEquivalentPerformanceCalculatorData(finalPerformance);
 
-
-
     }
-
-
-
 }

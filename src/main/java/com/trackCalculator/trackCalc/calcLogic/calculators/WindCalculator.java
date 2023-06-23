@@ -8,6 +8,8 @@ ranges: 100 m; 9–20, 200 m; 19–40, long jump; 3–10 m, triple jump; 7–19 
 use with caution outside -2.0 - 2.0 m/s wind
  */
 
+import com.trackCalculator.trackCalc.serverModels.ServerWindConversionData;
+
 import java.util.HashMap;
 import java.util.function.Function;
 
@@ -26,8 +28,9 @@ public final class WindCalculator {
 
 
 
-    public static String getConvertedPerformance(String event, float performance, float wind){
-        return Float.toString(performance + constantHashMap.get(event).windDifference.apply(wind));
+    public static ServerWindConversionData getConvertedPerformance(String event, float performance, float wind){
+        String converted = String.format("%.2f", performance + constantHashMap.get(event).windDifference.apply(wind));
+        return new ServerWindConversionData(converted);
     }
 
 
@@ -36,8 +39,8 @@ public final class WindCalculator {
         constantHashMap.put("200", new WindConstant(.09f, -.01f));
         constantHashMap.put("100H", new WindConstant(.093f, -.01f));
         constantHashMap.put("110H", new WindConstant(.093f, -.01f));
-        constantHashMap.put("Long Jump", new WindConstant(.032f, -.012f));
-        constantHashMap.put("Triple Jump", new WindConstant(.069f, -.009f));
+        constantHashMap.put("LONG_JUMP", new WindConstant(.032f, -.012f));
+        constantHashMap.put("TRIPLE_JUMP", new WindConstant(.069f, -.009f));
     }
 
 

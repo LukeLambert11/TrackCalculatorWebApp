@@ -2,22 +2,24 @@ package com.trackCalculator.trackCalc.calcLogic.calculators;
 
 import com.trackCalculator.trackCalc.calcLogic.util.TimeConversions;
 import com.trackCalculator.trackCalc.calcLogic.util.TrimHour;
+import com.trackCalculator.trackCalc.serverModels.ServerTimeCalculatorData;
 
 public class TimeCalculator {
 
-    public static String calculateTime(Float distance, int hourPace, int minutePace, float secondPace, String paceUnits){
+    public static ServerTimeCalculatorData calculateTime(Float distance, int hourPace, int minutePace, float secondPace, String paceUnits){
 
         float totalPaceSeconds = TimeConversions.convertToSeconds(hourPace, minutePace, secondPace);
 
 
 
         if (paceUnits.equals("kilometers")) {
-            return calculateTimeForKilometer(distance, totalPaceSeconds);
+            return new ServerTimeCalculatorData(calculateTimeForKilometer(distance, totalPaceSeconds));
 
         } else if (paceUnits.equals("miles")) {
-            return calculateTimeForMile(distance, totalPaceSeconds);
+            return new ServerTimeCalculatorData(calculateTimeForMile(distance, totalPaceSeconds));
         } else {
-            return "Invalid Input";
+            return new ServerTimeCalculatorData("Invalid Input");
+            //probably will throw an exception
         }
 
     }

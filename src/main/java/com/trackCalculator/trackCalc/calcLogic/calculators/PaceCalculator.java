@@ -2,6 +2,7 @@ package com.trackCalculator.trackCalc.calcLogic.calculators;
 
 
 import com.trackCalculator.trackCalc.calcLogic.util.TimeConversions;
+import com.trackCalculator.trackCalc.serverModels.ServerPaceCalculatorData;
 
 import static com.trackCalculator.trackCalc.calcLogic.util.TrimHour.checkHourTrim;
 
@@ -9,7 +10,7 @@ public class PaceCalculator {
 
 
 
-    public static String calculateAveragePace(Float distance, int hours, int minutes,  Float seconds, String distanceUnit){
+    public static ServerPaceCalculatorData calculateAveragePace(Float distance, int hours, int minutes, Float seconds, String distanceUnit){
 
         float totalSeconds = TimeConversions.convertToSeconds(hours, minutes, seconds);
 
@@ -25,13 +26,15 @@ public class PaceCalculator {
             kilometerDistance = distance * 1.60934f;
         }
         else{
-            return "Invalid Input";
+            //throw an exeception
+            return new ServerPaceCalculatorData("invalid", "invalid");
         }
+
 
         String pacePerMile = calculateAveragePacePerMile(mileDistance, totalSeconds);
         String pacePerKilometer = calculateAveragePacePerKilometer(kilometerDistance, totalSeconds);
 
-        return pacePerMile + " per mile\n" + pacePerKilometer + " per kilometer";
+         return new ServerPaceCalculatorData(pacePerMile, pacePerKilometer);
     }
 
 
