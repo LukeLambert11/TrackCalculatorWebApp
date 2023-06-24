@@ -4,13 +4,14 @@ package com.trackCalculator.trackCalc.clientModels;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
 //@Builder
 @Getter
 @Setter
 public class ClientEquivalentPerformanceCalculatorData {
 
     //for track races
-
+    /*
     public ClientEquivalentPerformanceCalculatorData(String initialGender, String initialLocation, String initialEvent,
                                                      int hours, int minutes, float seconds, String convertingGender,
                                                      String convertingLocation, String convertingEvent) {
@@ -44,7 +45,7 @@ public class ClientEquivalentPerformanceCalculatorData {
         this.minutes = null;
         this.seconds = null;
         this.isField = true;
-    }
+    }*/
 
 
     //String gender, String location, String event, Float performance

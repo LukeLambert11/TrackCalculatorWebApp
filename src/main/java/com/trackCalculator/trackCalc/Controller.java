@@ -39,7 +39,7 @@ public class Controller {
         return services.getCalculatedPace(clientData);
     }
 
-    @GetMapping(path = "equivalent-performance-calculator")
+    @GetMapping(path = "/equivalent-performance-calculator")
     public ServerEquivalentPerformanceCalculatorData
     getEquivalentPerformance(ClientEquivalentPerformanceCalculatorData clientData){
         return services.getEquivalentPerformance(clientData);
