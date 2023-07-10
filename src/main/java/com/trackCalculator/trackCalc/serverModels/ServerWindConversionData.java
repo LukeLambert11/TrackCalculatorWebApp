@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 public class ServerWindConversionData {
 
-    String performance;
+    String convertedPerformance;
 
 
 }

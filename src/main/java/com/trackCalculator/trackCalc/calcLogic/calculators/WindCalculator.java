@@ -35,12 +35,11 @@ public final class WindCalculator {
 
 
     private static void initializeHashMap(){
-        constantHashMap.put("100", new WindConstant(.071f, -.0042f));
-        constantHashMap.put("200", new WindConstant(.09f, -.01f));
-        constantHashMap.put("100H", new WindConstant(.093f, -.01f));
-        constantHashMap.put("110H", new WindConstant(.093f, -.01f));
-        constantHashMap.put("LONG_JUMP", new WindConstant(.032f, -.012f));
-        constantHashMap.put("TRIPLE_JUMP", new WindConstant(.069f, -.009f));
+        constantHashMap.put("100", new WindConstant(.071f, -.0042f, "100"));
+        constantHashMap.put("200", new WindConstant(.09f, -.01f, "200"));
+        constantHashMap.put("100/110H", new WindConstant(.093f, -.01f, "100/110H"));
+        constantHashMap.put("LONG_JUMP", new WindConstant(.032f, -.012f, "LONG_JUMP"));
+        constantHashMap.put("TRIPLE_JUMP", new WindConstant(.069f, -.009f, "TRIPLE_JUMP"));
     }
 
 
@@ -50,9 +49,16 @@ public final class WindCalculator {
     private static class WindConstant{
 
         private final Function<Float, Float> windDifference;
+        Boolean isFieldEvent;
 
-        WindConstant(Float a, Float b){
-            windDifference = (x) -> a * x + b * (float) Math.pow(x, 2);
+        WindConstant(Float a, Float b, String event){
+            if(event.equals("LONG_JUMP") || event.equals("TRIPLE_JUMP")){
+                isFieldEvent = true;
+                windDifference = (x) -> a * -1 * x + b * (float) Math.pow(-1 * x, 2);
+            }
+            else{
+                windDifference = (x) -> a * x + b * (float) Math.pow(x, 2);
+            }
         }
 
 
