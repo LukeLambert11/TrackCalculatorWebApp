@@ -78,11 +78,11 @@ public final class HungarianScoringCalculator {
 
         StringBuilder string = new StringBuilder();
 
-        if(gender.equals("men")){
-            string.append("men");
+        if(gender.equals("male")){
+            string.append("male");
         }
         else{
-            string.append("women");
+            string.append("female");
         }
 
         string.append(event);
@@ -98,20 +98,20 @@ public final class HungarianScoringCalculator {
 
         //womenIndoor
         String filePath = "src/main/java/com/trackCalculator/trackCalc/calcLogic/iaafScoringConstants/indoorFemale.csv";
-        addCsvData(filePath, "womenIndoor");
+        addCsvData(filePath, "femaleIndoor");
 
         //womenOutdoor
         filePath = "src/main/java/com/trackCalculator/trackCalc/calcLogic/iaafScoringConstants/outdoorFemale.csv";
-        addCsvData(filePath, "womenOutdoor");
+        addCsvData(filePath, "femaleOutdoor");
 
         //menIndoor
         filePath = "src/main/java/com/trackCalculator/trackCalc/calcLogic/iaafScoringConstants/indoorMale.csv";
-        addCsvData(filePath, "menIndoor");
+        addCsvData(filePath, "maleIndoor");
 
 
         //menOutdoor
         filePath = "src/main/java/com/trackCalculator/trackCalc/calcLogic/iaafScoringConstants/outdoorMale.csv";
-        addCsvData(filePath, "menOutdoor");
+        addCsvData(filePath, "maleOutdoor");
 
     }
 
@@ -139,13 +139,7 @@ public final class HungarianScoringCalculator {
                 float b = Float.parseFloat(values[3]);
                 float c = Float.parseFloat(values[4]);
 
-                /*
-                System.out.println("event: " + event);
-                System.out.println("a: " + a);
-                System.out.println("b: " + b);
-                System.out.println("c: " + c);
-                System.out.println();*/
-                //System.out.println(event);
+
                 constantsHashMap.put(event, new Constants(a, b, c, isField));
 
             }
