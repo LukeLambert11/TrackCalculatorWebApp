@@ -23,22 +23,22 @@ public class Controller {
         this.services = services;
     }
 
-    @GetMapping(path = "/wind-calculator")
+    @GetMapping(path = "/windCalculator")
     public ServerWindConversionData getWindConversion(ClientWindConversionData clientData){
         return services.getWindConversion(clientData);
     }
 
-    @GetMapping(path = "/time-calculator")
+    @GetMapping(path = "/timeCalculator")
     public ServerTimeCalculatorData getTimeCalculation(ClientTimeCalculatorData clientData){
         return services.getCalculatedTime(clientData);
     }
 
-    @GetMapping(path = "/pace-calculator")
+    @GetMapping(path = "/paceCalculator")
     public ServerPaceCalculatorData getPaceConversion(@ModelAttribute ClientPaceCalculatorData clientData){
         return services.getCalculatedPace(clientData);
     }
 
-    @GetMapping(path = "/equivalent-performance-calculator")
+    @GetMapping(path = "/iaafCalculator")
     public ServerEquivalentPerformanceCalculatorData
     getEquivalentPerformance(ClientEquivalentPerformanceCalculatorData clientData){
         return services.getEquivalentPerformance(clientData);

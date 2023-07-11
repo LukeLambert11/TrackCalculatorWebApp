@@ -50,6 +50,17 @@ public class PaceCalculator {
         int paceMinutes = (int) ((pacePerHour - Math.floor(pacePerHour)) * 60);
         float paceSeconds = (pacePerHour * 3600) % 60;
 
+
+        if(paceSeconds > 59.99){
+            paceSeconds = 0;
+            paceMinutes++;
+        }
+        if(paceMinutes > 59){
+            paceMinutes = 0;
+            pacePerHour++;
+        }
+
+
         String formattedPace = String.format("%02d:%02d:%05.2f", (int) Math.floor(pacePerHour), paceMinutes, paceSeconds);
 
         //removes leading zeros if the hours are zeros
@@ -58,6 +69,8 @@ public class PaceCalculator {
         return formattedPace;
 
     }
+
+
 
     static private String calculateAveragePacePerKilometer(float kilometers, float totalSeconds) {
         int hours = (int) totalSeconds / 3600;
@@ -70,7 +83,18 @@ public class PaceCalculator {
         int paceMinutes = (int) ((pacePerHour - Math.floor(pacePerHour)) * 60);
         float paceSeconds = (pacePerHour * 3600) % 60;
 
+
+        if(paceSeconds > 59.99){
+            paceSeconds = 0;
+            paceMinutes++;
+        }
+        if(paceMinutes > 59){
+            paceMinutes = 0;
+            pacePerHour++;
+        }
+
         String formattedPace = String.format("%02d:%02d:%05.2f", (int) Math.floor(pacePerHour), paceMinutes, paceSeconds);
+
 
 
         //removes leading zeros if the hours are zeros
