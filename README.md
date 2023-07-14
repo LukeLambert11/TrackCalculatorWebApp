@@ -35,7 +35,7 @@ To run the Track Calculator Web App locally, follow these steps:
    java -jar target/your-application.jar
    ```
    Replace `your-application.jar` with the name of the generated JAR file.
-6. Once the application is running, open your web browser and visit `http://localhost:8080` to access the Track Calculator Web App.
+6. Once the application is running, open your web browser and visit `http://localhost:8080` to access the Track Calculator Web App. The web app can also be viewed [www.trackcalculator.run](https://www.trackcalculator.run). 
 
 ## License
 
